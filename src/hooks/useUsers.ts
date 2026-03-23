@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { getUsers, type User } from "../api/users";
 import { toUserMessage } from "../api/error";
 
@@ -7,7 +7,7 @@ export function useUsers() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchUsers = async () => {
+  const fetchUsers = useCallback(async () => {
     try {
       setIsLoading(true);
       setError(null);
@@ -19,11 +19,11 @@ export function useUsers() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     fetchUsers();
-  }, []);
+  }, [fetchUsers]);
 
   return { users, isLoading, error, refetch: fetchUsers };
 }
