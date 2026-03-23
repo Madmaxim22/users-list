@@ -13,7 +13,11 @@ export default function Details({ info }: DetailsProps) {
   const { userDetails, isLoading, error } = useUserDetails(info.id);
 
   if (isLoading) {
-    return <div className="details-empty">Loading...</div>;
+    return (
+      <div className="details-empty details-loading">
+        <div className="spinner" aria-label="Loading user details" />
+      </div>
+    );
   }
   if (error) {
     return <div className="details-empty">Error: {error}</div>;
