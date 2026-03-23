@@ -2,6 +2,11 @@ import { useCallback, useEffect, useState } from "react";
 import { getUsers, type User } from "../api/users";
 import { toUserMessage } from "../api/error";
 
+/**
+ * Хук для загрузки списка пользователей и управления его состоянием.
+ *
+ * @returns Объект с данными списка, флагами загрузки/ошибки и функцией повторной загрузки.
+ */
 export function useUsers() {
   const [users, setUsers] = useState<User[]>([]);
   const [isLoading, setIsLoading] = useState(true);

@@ -2,6 +2,12 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { getUserById, type UserDetails } from "../api/users";
 import { toUserMessage } from "../api/error";
 
+/**
+ * Хук для загрузки подробной информации выбранного пользователя.
+ *
+ * @param id Идентификатор пользователя или `null`, если пользователь не выбран.
+ * @returns Объект с деталями пользователя, состоянием загрузки/ошибки и функцией повторного запроса.
+ */
 export function useUserDetails(id: number | null) {
   const [userDetails, setUserDetails] = useState<UserDetails | null>(null);
   const [isLoading, setIsLoading] = useState(false);

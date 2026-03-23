@@ -1,10 +1,20 @@
 import type { User } from "../api/users";
 import { useUserDetails } from "../hooks/useUserDetails";
 
+/**
+ * Пропсы компонента карточки пользователя.
+ */
 interface DetailsProps {
+  /** Выбранный пользователь из списка или `null`, если выбор не сделан. */
   info: User | null;
 }
 
+/**
+ * Рендерит детали выбранного пользователя.
+ *
+ * @param props Пропсы компонента.
+ * @returns JSX-элемент блока деталей пользователя.
+ */
 export default function Details({ info }: DetailsProps) {
   const { userDetails, isLoading, error, refetch } = useUserDetails(info?.id ?? null);
 

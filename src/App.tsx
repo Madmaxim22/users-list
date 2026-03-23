@@ -4,6 +4,11 @@ import type { User } from './api/users';
 import { useState } from 'react'; 
 import Details from './components/Details';
 
+/**
+ * Корневой компонент приложения со списком пользователей и их деталями.
+ *
+ * @returns JSX-элемент основного интерфейса приложения.
+ */
 function App() {
 
   const [selectedUser, setSelectedUser] = useState<User | null>(null);

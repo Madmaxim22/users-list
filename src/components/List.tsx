@@ -1,11 +1,22 @@
 import { useUsers } from "../hooks/useUsers";
 import type { User } from "../api/users";
 
+/**
+ * Пропсы компонента списка пользователей.
+ */
 interface ListProps {
+  /** Вызывается при выборе пользователя в списке. */
   onSelectUser: (user: User) => void;
+  /** Идентификатор текущего выбранного пользователя. */
   selectedUserId: number | null;
 }
 
+/**
+ * Рендерит список пользователей с обработкой загрузки и ошибок.
+ *
+ * @param props Пропсы компонента.
+ * @returns JSX-элемент списка пользователей.
+ */
 export default function List({ onSelectUser, selectedUserId }: ListProps) {
   const { users, isLoading, error, refetch } = useUsers();
   
