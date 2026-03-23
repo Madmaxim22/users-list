@@ -28,8 +28,8 @@ export async function getUsers(): Promise<User[]> {
   return data;
 }
 
-export async function getUserById(id: number): Promise<UserDetails> {
-  const response = await fetch(`${USERS_URL}/${id}.json`);
+export async function getUserById(id: number, signal?: AbortSignal): Promise<UserDetails> {
+  const response = await fetch(`${USERS_URL}/${id}.json`, { signal });
   if (!response.ok) {
     throw new ApiError(response.status);
   }
