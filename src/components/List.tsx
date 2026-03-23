@@ -1,7 +1,12 @@
 import { useUsers } from "../hooks/useUsers";
+import type { User } from "../api/users";
 
+interface ListProps {
+  onSelectUser: (user: User) => void;
+  selectedUserId: number | null;
+}
 
-export default function List() {
+export default function List({ onSelectUser, selectedUserId }: ListProps) {
   const { users, isLoading, error } = useUsers();
   if (isLoading) {
     return <div>Loading...</div>;
@@ -12,10 +17,13 @@ export default function List() {
 
   return (
     <div className="list">
-      <h2 className="list-title">Users List</h2>
       <ul className="list-items">
         {users.map((user) => (
-          <li key={user.id} className="list-item">
+          <li
+            key={user.id}
+            className={`list-item ${selectedUserId === user.id ? "list-item-active" : ""}`}
+            onClick={() => onSelectUser(user)}
+          >
             {user.name}
           </li>
         ))}
