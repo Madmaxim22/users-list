@@ -1,1 +1,43 @@
- 
+ /* Базовый reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Чтобы приложение занимало всю высоту */
+html,
+body,
+#root {
+  height: 100%;
+}
+
+/* Базовые настройки текста */
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Наследование шрифта для форм */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Удобные медиа по умолчанию */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+li {
+  list-style: none;
+}
