@@ -9,9 +9,8 @@ function App() {
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
 
   const handleSelectUser = (user: User) => {
-    setSelectedUser(user);
-  }
-
+    setSelectedUser((prev) => (prev?.id === user.id ? prev : user));
+  };
   return (
     <>
      <div className="container">

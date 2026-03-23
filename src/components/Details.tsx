@@ -6,11 +6,11 @@ interface DetailsProps {
 }
 
 export default function Details({ info }: DetailsProps) {
+  const { userDetails, isLoading, error, refetch } = useUserDetails(info?.id ?? null);
+
   if (!info) {
     return <div className="details-empty">No user selected</div>;
-  } 
-
-  const { userDetails, isLoading, error, refetch } = useUserDetails(info.id);
+  }
 
   if (isLoading) {
     return (
