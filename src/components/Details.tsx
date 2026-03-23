@@ -10,7 +10,7 @@ export default function Details({ info }: DetailsProps) {
     return <div className="details-empty">No user selected</div>;
   } 
 
-  const { userDetails, isLoading, error } = useUserDetails(info.id);
+  const { userDetails, isLoading, error, refetch } = useUserDetails(info.id);
 
   if (isLoading) {
     return (
@@ -19,8 +19,14 @@ export default function Details({ info }: DetailsProps) {
       </div>
     );
   }
+
   if (error) {
-    return <div className="details-empty">Error: {error}</div>;
+    return (
+      <div className="details-error">
+        <p>{error}</p>
+        <button type="button" onClick={refetch}>Retry</button>
+      </div>
+    );
   }
 
   return (

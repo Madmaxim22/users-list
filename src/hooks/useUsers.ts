@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getUsers, type User } from "../api/users";
+import { toUserMessage } from "../api/error";
 
 export function useUsers() {
   const [users, setUsers] = useState<User[]>([]);
@@ -14,7 +15,7 @@ export function useUsers() {
       const data = await getUsers();
       setUsers(data);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Неизвестная ошибка");
+      setError(toUserMessage(err));
     } finally {
       setIsLoading(false);
     }

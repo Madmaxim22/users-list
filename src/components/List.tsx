@@ -7,7 +7,7 @@ interface ListProps {
 }
 
 export default function List({ onSelectUser, selectedUserId }: ListProps) {
-  const { users, isLoading, error } = useUsers();
+  const { users, isLoading, error, refetch } = useUsers();
   
   if (isLoading) {
     return (
@@ -22,7 +22,14 @@ export default function List({ onSelectUser, selectedUserId }: ListProps) {
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return (
+      <div className="list">
+        <div className="error-box">
+          <p>{error}</p>
+          <button type="button" onClick={refetch}>Retry</button>
+        </div>
+      </div>
+    );
   }
 
   return (

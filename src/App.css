@@ -59,6 +59,62 @@
   }
 }
 
+.error-box,
+.details-error {
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+  padding: 14px 16px;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  background-color: #fef2f2;
+  text-align: center;
+  color: #991b1b;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.error-box p,
+.details-error p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.error-box::before,
+.details-error::before {
+  content: "Request failed";
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #b91c1c;
+}
+
+.error-box button,
+.details-error button {
+  align-self: center;
+  border: 1px solid #000;
+  border-radius: 6px;
+  background-color: #fff;
+  color: #b91c1c;
+  font-weight: 600;
+  padding: 7px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.error-box button:hover,
+.details-error button:hover {
+  background-color: #ef4444;
+  color: #fff;
+}
+
+.details-error {
+  min-height: 180px;
+  justify-content: center;
+}
+
 /* Details */
 
 .section-details {
@@ -69,6 +125,10 @@
 }
 
 .details-empty {
+  width: 100%;
+  max-width: 360px;
+  min-height: 280px;
+  text-align: center;
   padding: 16px;
   border: 1px solid #d1d5db;
   border-radius: 8px;
@@ -76,7 +136,9 @@
 }
 
 .details-loading {
-  min-height: 180px;
+  width: 100%;
+  max-width: 360px;
+  min-height: 280px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -85,6 +147,7 @@
 .details-card {
   width: 100%;
   max-width: 360px;
+  min-height: 280px;
   padding: 20px;
   border: 1px solid #d1d5db;
   border-radius: 8px;

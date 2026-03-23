@@ -1,3 +1,5 @@
+import { ApiError } from "./error";
+
 export type User = {
   id: number;
   name: string;
@@ -20,7 +22,7 @@ const USERS_URL = "https://raw.githubusercontent.com/netology-code/ra16-homework
 export async function getUsers(): Promise<User[]> {
   const response = await fetch(`${USERS_URL}/users.json`);
   if (!response.ok) {
-    throw new Error(`Ошибка запроса: ${response.status}`);
+    throw new ApiError(response.status);
   }
   const data = (await response.json()) as User[];
   return data;
@@ -29,7 +31,7 @@ export async function getUsers(): Promise<User[]> {
 export async function getUserById(id: number): Promise<UserDetails> {
   const response = await fetch(`${USERS_URL}/${id}.json`);
   if (!response.ok) {
-    throw new Error(`Ошибка запроса: ${response.status}`);
+    throw new ApiError(response.status);
   }
   const data = (await response.json()) as UserDetails;
   return data;
